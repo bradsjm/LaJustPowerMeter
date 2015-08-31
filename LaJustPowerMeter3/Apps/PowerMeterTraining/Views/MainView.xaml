@@ -1,0 +1,97 @@
+﻿<Window x:Class="Shell.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://www.codeplex.com/prism" 
+    xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+    Title="LaJust Power Meter"
+    WindowStyle="None" WindowState="Maximized" ResizeMode="CanResize" Cursor="Hand"
+    Background="Black" WindowStartupLocation="Manual" ShowActivated="True" Foreground="White"
+    MinWidth="1024" MinHeight="720" Icon="/LaJustPowerMeter;component/Resources/LaJustIcon.ico">
+    
+    <Window.Resources>
+        <infrastructure:VisibilityConverter x:Key="VisibilityConverter"/>
+        <ControlTemplate x:Key="PopupTemplate" TargetType="{x:Type ContentControl}">
+            <Grid>
+                <Border Background="Black" Opacity="0.5"/>
+                <Grid>
+                    <Border Margin="40" Background="LightSlateGray" BorderBrush="DarkSlateGray" BorderThickness="10" CornerRadius="10">
+                        <ContentPresenter Margin="10"/>
+                    </Border>
+
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Margin="10" OverridesDefaultStyle="True" Command="{Binding CloseCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <Image Source="/Infrastructure;component/Resources/Symbols/Symbol-Delete.png" Stretch="Uniform"/>
+                    </Button>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+        
+        <DataTemplate x:Key="ButtonTemplate" DataType="{x:Type infrastructure:ToolBarItemModel}">
+            <Button Height="60" MinWidth="100" Margin="10"
+                            Command="{Binding Command}" CommandParameter="{Binding Parameter}">
+                <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+                    <Image Margin="0,0,5,0" Height="32" Stretch="Uniform" Source="{Binding Icon}" />
+                    <TextBlock FontSize="13" VerticalAlignment="Center" Text="{Binding Text}" />
+                </StackPanel>
+            </Button>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="ButtonPanelTemplate">
+            <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentControl Grid.Row="0" Margin="5" prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.PrimaryPageRegion}" />
+
+        <!-- Receiver State LED -->
+        <ContentControl Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.7"
+                        prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.ReceiverStateRegion}" />
+
+        <!-- Tool Bar Buttons -->
+        <DockPanel Grid.Row="1" Background="WhiteSmoke" LastChildFill="False">
+
+            <Button Height="60" Width="100" Margin="20,10,10,10" Click="ExitButtonClick" DockPanel.Dock="Right">
+                <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+                    <Image Margin="0,0,5,0" Height="32" Stretch="Uniform" Source="/Resources/Exit.png" />
+                    <TextBlock FontSize="13" VerticalAlignment="Center">Exit</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <ItemsControl 
+                prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.ToolbarLeftRegion}" 
+                DockPanel.Dock="Left" 
+                ItemTemplate="{StaticResource ResourceKey=ButtonTemplate}"
+                ItemsPanel="{StaticResource ResourceKey=ButtonPanelTemplate}"/>
+
+            <ItemsControl
+                prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.ToolbarRightRegion}"
+                DockPanel.Dock="Right"
+                ItemTemplate="{StaticResource ResourceKey=ButtonTemplate}"
+                ItemsPanel="{StaticResource ResourceKey=ButtonPanelTemplate}"/>
+        </DockPanel>
+
+        <!-- Pop up Overlay -->
+        <ContentControl 
+            Grid.RowSpan="2" 
+            prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.OverlayRegion}" 
+            Template="{StaticResource ResourceKey=PopupTemplate}"
+            Visibility="{Binding Path=PopupVisible, Converter={StaticResource ResourceKey=VisibilityConverter}, ConverterParameter=Visible|Collapsed}" />
+    </Grid>
+</Window>

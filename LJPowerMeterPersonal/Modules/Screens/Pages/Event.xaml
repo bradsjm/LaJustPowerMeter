@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="LaJust.PowerMeter.Modules.Screens.Pages.Event" x:Name="EventPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+    xmlns:common="clr-namespace:LaJust.PowerMeter.Common;assembly=LaJust.PowerMeter.Common"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:il="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"
+    Background="Black">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Resources/LaJustLogo.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".25*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- LaJust Logo -->
+            <ContentControl Grid.Column="0" Margin="10"
+                            Template="{StaticResource LaJustLogo}" />
+            <!-- Clock Display -->
+            <ContentControl Grid.Column="1" HorizontalAlignment="Center"
+                cal:RegionManager.RegionName="{x:Static common:RegionNames.ClockRegion}"  />
+            
+            <DockPanel Grid.Column="2">
+                <!-- Game Number -->
+                <ContentControl DockPanel.Dock="Left" Margin="10" cal:RegionManager.RegionName="{x:Static common:RegionNames.GameNumberRegion}" />
+            
+                <!-- Game Round Number -->
+                <ContentControl DockPanel.Dock="Right" Margin="10" cal:RegionManager.RegionName="{x:Static common:RegionNames.GameRoundRegion}" />
+            </DockPanel>
+        </Grid>
+
+        <!-- Meters -->
+        <ItemsControl Grid.Row="1" cal:RegionManager.RegionName="{x:Static common:RegionNames.MeterRegion}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" IsItemsHost="True">
+			        	<i:Interaction.Behaviors>
+			        		<il:FluidMoveBehavior AppliesTo="Children" Duration="00:00:00.75"/>
+			        	</i:Interaction.Behaviors>
+					</UniformGrid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+</UserControl>

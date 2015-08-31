@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="LaJust.PowerMeter.ControlLibrary.SimpleGraph.Graph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="75" MinWidth="200" Background="Black">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left hand side Scale-->
+        <UniformGrid Grid.Column="0" Columns="1" Margin="2" >
+            <Label x:Name="y1Label" VerticalAlignment="Top" Foreground="White" Content="Top" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label x:Name="y2Label" VerticalAlignment="Center" Foreground="White" Content="Mid" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label x:Name="y3Label" VerticalAlignment="Bottom"  Foreground="White" Content="Bot" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right"/>
+        </UniformGrid>
+
+        <Canvas Grid.Column="1">
+            <Line Stroke="AliceBlue" Canvas.Top="1" StrokeThickness="1" X1="0" X2="6"/>
+            <Line Stroke="AliceBlue" Canvas.Bottom="0" StrokeThickness="1" X1="3" X2="6"/>
+            <Line Stroke="AliceBlue" Canvas.Top="0" StrokeThickness="1" X1="3" X2="3" Y2="{Binding ElementName=container, Path=ActualHeight}" />
+        </Canvas>
+
+        <!-- Graph area-->
+        <Canvas Grid.Column="2" x:Name="container" ClipToBounds="True">
+            <Canvas.Background>
+                <ImageBrush TileMode="Tile"  Viewport="0,0,0.02,0.02" ImageSource="/LaJust.PowerMeter.ControlLibrary;component/SimpleGraph/ChartBg.png"></ImageBrush>
+            </Canvas.Background>
+
+            <!-- Graph Y axis line -->
+            <Line Stroke="AliceBlue" Canvas.Bottom="0" StrokeThickness="1" X1="0" X2="{Binding ElementName=container, Path=ActualWidth}"/>
+            
+            <!-- Start of Children-->
+            <Line x:Name="ThresholdLine" Stroke="Yellow" X2="{Binding ElementName=container, Path=ActualWidth}" 
+                          StrokeThickness="2" StrokeDashArray="2 1" Visibility="Hidden"/>
+
+            <Polyline x:Name="GraphLine" Canvas.Left="0" 
+                              StrokeLineJoin="Round" 
+                              StrokeThickness="4" Visibility="Hidden"/>
+
+            <Ellipse x:Name="LastPointMarkerEllipse" Fill="OrangeRed" Visibility="Hidden" Width="10" Height="10"/>
+
+            <Label x:Name="ScaleCurrentValue" FontFamily="Tahoma" 
+                       Foreground="White"  
+                       FontSize="16" FontWeight="Bold" Canvas.Right="2" />
+
+        </Canvas>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="LaJust.PowerMeter.Modules.GameEngine.UserControls.RoundNumber"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:transc="clr-namespace:Transitionals.Controls;assembly=Transitionals"
+    xmlns:transt="clr-namespace:Transitionals.Transitions;assembly=Transitionals">
+
+    <transc:TransitionElement x:Name="RoundNumberBox" TransitionsEnabled="True">
+        <transc:TransitionElement.Transition>
+            <transt:FadeAndGrowTransition />
+        </transc:TransitionElement.Transition>
+        <Image Stretch="Uniform" Source="/LaJust.PowerMeter.Modules.GameEngine;component/Resources/Rounds/0R.png"/>
+    </transc:TransitionElement>
+</UserControl>

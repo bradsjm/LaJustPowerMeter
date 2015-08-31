@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataLogModel" targetNamespace="uri://lajust.net/DataLogModel.xsd" xmlns:mstns="uri://lajust.net/DataLogModel.xsd" xmlns="uri://lajust.net/DataLogModel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataLogModel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataLogModel" msprop:Generator_DataSetName="DataLogModel" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Impacts" msprop:Generator_UserTableName="Impacts" msprop:Generator_RowDeletedName="ImpactsRowDeleted" msprop:Generator_RowChangedName="ImpactsRowChanged" msprop:Generator_RowClassName="ImpactsRow" msprop:Generator_RowChangingName="ImpactsRowChanging" msprop:Generator_RowEvArgName="ImpactsRowChangeEvent" msprop:Generator_RowEvHandlerName="ImpactsRowChangeEventHandler" msprop:Generator_TableClassName="ImpactsDataTable" msprop:Generator_TableVarName="tableImpacts" msprop:Generator_RowDeletingName="ImpactsRowDeleting" msprop:Generator_TablePropName="Impacts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+              <xs:element name="Timestamp" msprop:Generator_UserColumnName="Timestamp" msprop:Generator_ColumnPropNameInRow="Timestamp" msprop:Generator_ColumnVarNameInTable="columnTimestamp" msprop:Generator_ColumnPropNameInTable="TimestampColumn" type="xs:dateTime" />
+              <xs:element name="SensorId" msprop:Generator_UserColumnName="SensorId" msprop:Generator_ColumnPropNameInRow="SensorId" msprop:Generator_ColumnVarNameInTable="columnSensorId" msprop:Generator_ColumnPropNameInTable="SensorIdColumn" type="xs:string" />
+              <xs:element name="GameNumber" msprop:Generator_UserColumnName="GameNumber" msprop:Generator_ColumnPropNameInRow="GameNumber" msprop:Generator_ColumnVarNameInTable="columnGameNumber" msprop:Generator_ColumnPropNameInTable="GameNumberColumn" type="xs:unsignedByte" />
+              <xs:element name="RoundNumber" msprop:Generator_UserColumnName="RoundNumber" msprop:Generator_ColumnPropNameInRow="RoundNumber" msprop:Generator_ColumnVarNameInTable="columnRoundNumber" msprop:Generator_ColumnPropNameInTable="RoundNumberColumn" type="xs:unsignedByte" />
+              <xs:element name="ElapsedTime" msprop:Generator_UserColumnName="ElapsedTime" msprop:Generator_ColumnPropNameInRow="ElapsedTime" msprop:Generator_ColumnVarNameInTable="columnElapsedTime" msprop:Generator_ColumnPropNameInTable="ElapsedTimeColumn" type="xs:duration" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+              <xs:element name="DataSource" msprop:Generator_UserColumnName="DataSource" msprop:Generator_ColumnVarNameInTable="columnDataSource" msprop:Generator_ColumnPropNameInRow="DataSource" msprop:Generator_ColumnPropNameInTable="DataSourceColumn" type="xs:string" />
+              <xs:element name="RequiredLevel" msprop:Generator_UserColumnName="RequiredLevel" msprop:Generator_ColumnPropNameInRow="RequiredLevel" msprop:Generator_ColumnVarNameInTable="columnRequiredLevel" msprop:Generator_ColumnPropNameInTable="RequiredLevelColumn" type="xs:unsignedByte" />
+              <xs:element name="ImpactLevel" msprop:Generator_UserColumnName="ImpactLevel" msprop:Generator_ColumnPropNameInRow="ImpactLevel" msprop:Generator_ColumnVarNameInTable="columnImpactLevel" msprop:Generator_ColumnPropNameInTable="ImpactLevelColumn" type="xs:unsignedByte" />
+              <xs:element name="SensorPanel" msprop:Generator_UserColumnName="SensorPanel" msprop:Generator_ColumnPropNameInRow="SensorPanel" msprop:Generator_ColumnVarNameInTable="columnSensorPanel" msprop:Generator_ColumnPropNameInTable="SensorPanelColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Scores" msprop:Generator_UserTableName="Scores" msprop:Generator_RowDeletedName="ScoresRowDeleted" msprop:Generator_RowChangedName="ScoresRowChanged" msprop:Generator_RowClassName="ScoresRow" msprop:Generator_RowChangingName="ScoresRowChanging" msprop:Generator_RowEvArgName="ScoresRowChangeEvent" msprop:Generator_RowEvHandlerName="ScoresRowChangeEventHandler" msprop:Generator_TableClassName="ScoresDataTable" msprop:Generator_TableVarName="tableScores" msprop:Generator_RowDeletingName="ScoresRowDeleting" msprop:Generator_TablePropName="Scores">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+              <xs:element name="Timestamp" msprop:Generator_UserColumnName="Timestamp" msprop:Generator_ColumnVarNameInTable="columnTimestamp" msprop:Generator_ColumnPropNameInRow="Timestamp" msprop:Generator_ColumnPropNameInTable="TimestampColumn" type="xs:dateTime" />
+              <xs:element name="SensorId" msprop:Generator_UserColumnName="SensorId" msprop:Generator_ColumnVarNameInTable="columnSensorId" msprop:Generator_ColumnPropNameInRow="SensorId" msprop:Generator_ColumnPropNameInTable="SensorIdColumn" type="xs:string" />
+              <xs:element name="GameNumber" msprop:Generator_UserColumnName="GameNumber" msprop:Generator_ColumnVarNameInTable="columnGameNumber" msprop:Generator_ColumnPropNameInRow="GameNumber" msprop:Generator_ColumnPropNameInTable="GameNumberColumn" type="xs:unsignedByte" />
+              <xs:element name="RoundNumber" msprop:Generator_UserColumnName="RoundNumber" msprop:Generator_ColumnVarNameInTable="columnRoundNumber" msprop:Generator_ColumnPropNameInRow="RoundNumber" msprop:Generator_ColumnPropNameInTable="RoundNumberColumn" type="xs:unsignedByte" />
+              <xs:element name="ElapsedTime" msprop:Generator_UserColumnName="ElapsedTime" msprop:Generator_ColumnVarNameInTable="columnElapsedTime" msprop:Generator_ColumnPropNameInRow="ElapsedTime" msprop:Generator_ColumnPropNameInTable="ElapsedTimeColumn" type="xs:duration" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+              <xs:element name="RequiredLevel" msprop:Generator_UserColumnName="RequiredLevel" msprop:Generator_ColumnVarNameInTable="columnRequiredLevel" msprop:Generator_ColumnPropNameInRow="RequiredLevel" msprop:Generator_ColumnPropNameInTable="RequiredLevelColumn" type="xs:unsignedByte" />
+              <xs:element name="ImpactLevel" msprop:Generator_UserColumnName="ImpactLevel" msprop:Generator_ColumnVarNameInTable="columnImpactLevel" msprop:Generator_ColumnPropNameInRow="ImpactLevel" msprop:Generator_ColumnPropNameInTable="ImpactLevelColumn" type="xs:unsignedByte" />
+              <xs:element name="Points" msprop:Generator_UserColumnName="Points" msprop:Generator_ColumnVarNameInTable="columnPoints" msprop:Generator_ColumnPropNameInRow="Points" msprop:Generator_ColumnPropNameInTable="PointsColumn" type="xs:int" />
+              <xs:element name="NewScore" msprop:Generator_UserColumnName="NewScore" msprop:Generator_ColumnVarNameInTable="columnNewScore" msprop:Generator_ColumnPropNameInRow="NewScore" msprop:Generator_ColumnPropNameInTable="NewScoreColumn" type="xs:unsignedInt" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Impacts" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Scores_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Scores" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

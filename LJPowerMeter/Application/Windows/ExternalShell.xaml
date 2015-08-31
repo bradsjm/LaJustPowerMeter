@@ -1,0 +1,10 @@
+﻿<Window x:Class="LaJust.PowerMeter.UI.ExternalShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+    xmlns:common="clr-namespace:LaJust.PowerMeter.Common;assembly=LaJust.PowerMeter.Common"
+    Title="LaJust Power Meter External Display" ShowInTaskbar="True"
+    Icon="../LaJustIcon.ico" Cursor="No" WindowStyle="None" ShowActivated="False"
+    Background="Black" MinWidth="1024" MinHeight="720">
+    <ContentControl cal:RegionManager.RegionName="{x:Static common:RegionNames.SecondaryPageRegion}" />
+</Window>

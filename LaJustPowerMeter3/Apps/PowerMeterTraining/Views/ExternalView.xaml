@@ -1,0 +1,10 @@
+﻿<Window x:Class="Shell.ExternalView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+    xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+    Title="LaJust Power Meter External Display" ShowInTaskbar="True"
+    Icon="../LaJustIcon.ico" Cursor="No" WindowStyle="None" ShowActivated="False"
+    Background="Black" MinWidth="1024" MinHeight="720">
+    <ContentControl cal:RegionManager.RegionName="{x:Static infrastructure:RegionNames.SecondaryPageRegion}" />
+</Window>

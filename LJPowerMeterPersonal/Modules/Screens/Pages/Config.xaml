@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="LaJust.PowerMeter.Modules.Screens.Pages.Config" x:Name="ConfigPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:common="clr-namespace:LaJust.PowerMeter.Common;assembly=LaJust.PowerMeter.Common"
+    MinWidth="1024" MinHeight="600" Background="Black" Foreground="White">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Resources/LaJustLogo.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width=".3*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LaJust Logo -->
+                <ContentControl Grid.Column="0" Template="{StaticResource LaJustLogo}" Margin="20" />
+
+                <!-- Page Title Display -->
+                <TextBlock Grid.Column="1" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center" Foreground="Azure"
+                           Text="Configuration Options">
+                </TextBlock>
+                
+                <Image Grid.Column="2" Source="/LaJust.PowerMeter.Modules.Screens;component/Resources/Setup.png" Stretch="Uniform" Margin="20" Height="80" />
+            </Grid>
+        </Grid>
+
+        <!-- Page Content -->
+        <Border Grid.Row="1" BorderBrush="DarkSlateGray" BorderThickness="6" CornerRadius="3">
+            <Viewbox>
+                <ItemsControl Margin="2" cal:RegionManager.RegionName="{x:Static common:RegionNames.ConfigGeneralOptionsRegion}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Viewbox>
+        </Border>
+
+        <!--<Grid Grid.Row="1">
+            <telerik:RadPanelBar Orientation="Horizontal" FontSize="46" Background="DarkSlateGray" Margin="0,0,0,1">
+
+                <telerik:RadPanelBarItem Header=" General Options" IsExpanded="True">
+                    <ItemsControl Background="Black" cal:RegionManager.RegionName="{x:Static common:RegionNames.ConfigGeneralOptionsRegion}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </telerik:RadPanelBarItem>
+
+            </telerik:RadPanelBar>
+        </Grid>-->
+    </Grid>
+</UserControl>

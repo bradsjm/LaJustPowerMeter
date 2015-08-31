@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Roster.RosterScreenView" x:Name="Roster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+    xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+    Background="Black" Foreground="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width=".3*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LaJust Logo -->
+                <infrastructure:LaJustLogo Margin="20" />
+
+                <!-- Page Title Display -->
+                <TextBlock Grid.Column="1" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center" Foreground="Azure"
+                           Text="Competitor Roster">
+                </TextBlock>
+
+                <Image Grid.Column="2" Source="../Resources/User-Male.png" Stretch="Uniform" Margin="20" Height="80" />
+            </Grid>
+        </Grid>
+
+        <!-- Page Content -->
+        <Border Grid.Row="1" Background="LightSlateGray" BorderBrush="DarkSlateGray" BorderThickness="6" CornerRadius="3">
+            <ContentControl Margin="2" cal:RegionManager.RegionName="{x:Static infrastructure:RegionNames.RosterNamesRegion}"/>
+        </Border>
+    </Grid>
+</UserControl>

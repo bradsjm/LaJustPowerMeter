@@ -1,0 +1,390 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Scroll Bar with larger width -->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+        <Setter Property="MinWidth" Value="60"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot" Background="{DynamicResource NormalBrush}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MaxHeight="36" />
+                            <RowDefinition Height="0.00001*" />
+                            <RowDefinition MaxHeight="36" />
+                        </Grid.RowDefinitions>
+                        <RepeatButton x:Name="DecreaseRepeat" Command="ScrollBar.LineUpCommand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                            <Grid Margin="0,0,0,0">
+                                <Path Margin="4.742,3.997,4.946,5.327" VerticalAlignment="Stretch" Height="Auto" Fill="{DynamicResource GlyphBrush}" Stretch="Fill" Stroke="{DynamicResource GlyphBrush}" StrokeThickness="1" Data="M5.2422477,11.132184 L11.5544,11.132184 8.6412958,4.4969033 z" x:Name="DecreaseArrow" />
+                            </Grid>
+                        </RepeatButton>
+                        <Track Grid.Row="1" x:Name="PART_Track" Orientation="Vertical" IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb Style="{DynamicResource NuclearThumbStyle}" Background="{x:Null}" Foreground="{x:Null}" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="PageUp" Style="{DynamicResource NuclearScrollRepeatButtonStyle}" Command="ScrollBar.PageDownCommand" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="PageDown" Style="{DynamicResource NuclearScrollRepeatButtonStyle}" Command="ScrollBar.PageUpCommand" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                        <RepeatButton Grid.Row="2" x:Name="IncreaseRepeat" Command="ScrollBar.LineDownCommand">
+                            <Grid>
+                                <Path Margin="4.742,3.997,4.946,5.327" x:Name="IncreaseArrow" VerticalAlignment="Stretch" Height="Auto" Fill="{DynamicResource GlyphBrush}" Stretch="Fill" Stroke="{DynamicResource GlyphBrush}" StrokeThickness="1" Data="M5.2422477,11.132184 L11.5544,11.132184 8.6412958,4.4969033 z" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            <SkewTransform AngleX="0" AngleY="0" />
+                                            <RotateTransform Angle="180" />
+                                            <TranslateTransform X="0" Y="0" />
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Grid>
+                        </RepeatButton>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter Property="LayoutTransform" TargetName="GridRoot">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Track" Property="Orientation" Value="Vertical" />
+                            <Setter Property="Command" Value="ScrollBar.LineLeftCommand" TargetName="DecreaseRepeat" />
+                            <Setter Property="Command" Value="ScrollBar.LineRightCommand" TargetName="IncreaseRepeat" />
+                            <Setter Property="Command" Value="ScrollBar.PageLeftCommand" TargetName="PageDown" />
+                            <Setter Property="Command" Value="ScrollBar.PageRightCommand" TargetName="PageUp" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Modified List Box Item -->
+    <Style d:IsControlPart="True" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="HoverOn">
+
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="HoverRectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="HoverOff">
+
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="HoverRectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="SelectedOn">
+
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="SelectedOff">
+
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="SelectedRectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="FocussedOn">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="FocusVisualElement" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="FocussedOff">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="FocusVisualElement" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid SnapsToDevicePixels="true" Margin="1,1,1,1">
+                        <Rectangle x:Name="Background" IsHitTestVisible="False" Opacity="0.25" Fill="{StaticResource NormalBrush}" RadiusX="1" RadiusY="1"/>
+                        <Rectangle x:Name="HoverRectangle" IsHitTestVisible="False" Opacity="0" Fill="{StaticResource NormalBrush}" RadiusX="1" RadiusY="1"/>
+                        <Rectangle x:Name="SelectedRectangle" IsHitTestVisible="False" Opacity="0" Fill="{StaticResource SelectedBackgroundBrush}" RadiusX="1" RadiusY="1"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,2,0,2" x:Name="contentPresenter" />
+                        <Rectangle x:Name="FocusVisualElement" Stroke="{StaticResource HoverShineBrush}" StrokeThickness="1" RadiusX="1" RadiusY="1" Opacity="0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocussedOff}" x:Name="FocussedOff_BeginStoryboard"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocussedOn}" x:Name="FocussedOn_BeginStoryboard"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="SelectedOff_BeginStoryboard" Storyboard="{StaticResource SelectedOff}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="SelectedOn_BeginStoryboard" Storyboard="{StaticResource SelectedOn}"/>
+                            </Trigger.EnterActions>
+
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="Selector.IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource HoverOn}"/>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard x:Name="HoverOff_BeginStoryboard" Storyboard="{StaticResource HoverOff}"/>
+                            </MultiTrigger.ExitActions>
+
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelected" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Style.Triggers>
+            <Trigger Property="Selector.IsSelected" Value="True">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource BlackColor}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Customized Checkbox using images -->
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Border x:Name="Border"  
+                                      Width="52" 
+                                      Height="52" 
+                                      CornerRadius="0" 
+                                      BorderBrush="White"
+                                      BorderThickness="1">
+                                <Image x:Name="CheckMark"
+                                        Margin="5" Height="42" Stretch="Uniform"/>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                RecognizesAccessKey="True"/>
+                    </BulletDecorator>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Source" Value="/Infrastructure;component/Resources/Symbols/Select.png"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="CheckMark" Property="Source" Value="/Infrastructure;component/Resources/Symbols/Error.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Customized Up/Down Control -->
+    <Style TargetType="{x:Type telerik:RadNumericUpDown}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type telerik:RadNumericUpDown}">
+                    <Grid x:Name="LayoutRoot">
+                        <Border x:Name="OuterBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="colDefLeftButtons" Width="Auto"/>
+                                    <ColumnDefinition x:Name="colDefText" Width="*"/>
+                                    <ColumnDefinition x:Name="colDefButtons" Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <RepeatButton IsTabStop="False" x:Name="decrease" ContentTemplate="{TemplateBinding IncreaseButtonContentTemplate}" Delay="{TemplateBinding Delay}" Interval="{TemplateBinding RepeatInterval}">
+                                    <RepeatButton.Style>
+                                        <Style TargetType="{x:Type RepeatButton}">
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                            <Setter Property="IsTabStop" Value="True"/>
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                            <Setter Property="Interval" Value="250"/>
+                                            <Setter Property="Delay" Value="100"/>
+                                            <Setter Property="ClickMode" Value="Press"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                        <Image Margin="0,10,10,10" Source="/Infrastructure;component/Resources/Symbols/Symbol-Restricted.png"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </RepeatButton.Style>
+                                </RepeatButton>
+                                <Border x:Name="InnerBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="#FF888688" BorderThickness="1,1,1,1">
+                                    <telerik:PickerTextBox HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="2,2,2,2" x:Name="textbox" IsReadOnly="True" Text="{TemplateBinding ContentText}">
+                                        <telerik:StyleManager.Theme>
+                                            <telerik:Office_BlackTheme/>
+                                        </telerik:StyleManager.Theme>
+                                    </telerik:PickerTextBox>
+                                </Border>
+                                <RepeatButton Grid.Column="2" IsTabStop="False" x:Name="increase" ContentTemplate="{TemplateBinding DecreaseButtonContentTemplate}" Grid.Row="1" Delay="{TemplateBinding Delay}" Interval="{TemplateBinding RepeatInterval}">
+                                    <RepeatButton.Style>
+                                        <Style TargetType="{x:Type RepeatButton}">
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                            <Setter Property="IsTabStop" Value="True"/>
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                            <Setter Property="Interval" Value="250"/>
+                                            <Setter Property="Delay" Value="100"/>
+                                            <Setter Property="ClickMode" Value="Press"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                        <Image Margin="10,10,0,10" Source="/Infrastructure;component/Resources/Symbols/Symbol-Add.png"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </RepeatButton.Style>
+                                </RepeatButton>
+                                <Border x:Name="ValidationErrorElement" Visibility="Collapsed" BorderBrush="#FFDB000C" BorderThickness="1,1,1,1" CornerRadius="1,1,1,1">
+                                    <Border.ToolTip>
+                                        <ToolTip x:Name="validationTooltip" Placement="Right">
+                                            <ToolTip.Template>
+                                                <ControlTemplate TargetType="{x:Type ToolTip}">
+                                                    <Grid Margin="5,0,5,0" x:Name="Root" Opacity="0" RenderTransformOrigin="0,0">
+                                                        <Grid.RenderTransform>
+                                                            <TranslateTransform X="-25"/>
+                                                        </Grid.RenderTransform>
+                                                        <Border Margin="4,4,-4,-4" Background="#052A2E31" CornerRadius="5,5,5,5"/>
+                                                        <Border Margin="3,3,-3,-3" Background="#152A2E31" CornerRadius="4,4,4,4"/>
+                                                        <Border Margin="2,2,-2,-2" Background="#252A2E31" CornerRadius="3,3,3,3"/>
+                                                        <Border Margin="1,1,-1,-1" Background="#352A2E31" CornerRadius="2,2,2,2"/>
+                                                        <Border Background="#FFDC000C" CornerRadius="2,2,2,2"/>
+                                                        <Border CornerRadius="2,2,2,2">
+                                                            <TextBlock Margin="8,4,8,4" MaxWidth="250" Foreground="#FFFFFFFF" Text="{Binding Path=(Validation.Errors)[0].ErrorContent}" TextWrapping="Wrap"/>
+                                                        </Border>
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsOpen" Value="True">
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard x:Name="OpenAnimation">
+                                                                        <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetName="xform" Storyboard.TargetProperty="X" To="0"/>
+                                                                        <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="1"/>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.EnterActions>
+                                                            <Trigger.ExitActions>
+                                                                <StopStoryboard BeginStoryboardName="OpenAnimation"/>
+                                                            </Trigger.ExitActions>
+                                                        </Trigger>
+                                                        <Trigger Property="IsOpen" Value="True">
+                                                            <Setter Property="RenderTransform" TargetName="Root">
+                                                                <Setter.Value>
+                                                                    <TranslateTransform X="0"/>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="Opacity" TargetName="Root" Value="1"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsOpen" Value="False">
+                                                            <Setter Property="Opacity" TargetName="Root" Value="0"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </ToolTip.Template>
+                                            <ToolTip.Triggers>
+                                                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="validationTooltip" Storyboard.TargetProperty="IsHitTestVisible">
+                                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                                    <DiscreteObjectKeyFrame.Value>
+                                                                        <sys:Boolean>True</sys:Boolean>
+                                                                    </DiscreteObjectKeyFrame.Value>
+                                                                </DiscreteObjectKeyFrame>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </ToolTip.Triggers>
+                                        </ToolTip>
+                                    </Border.ToolTip>
+                                    <Grid HorizontalAlignment="Right" Margin="1,-4,-4,0" VerticalAlignment="Top" Width="12" Height="12" Background="#00FFFFFF">
+                                        <Path Fill="#FFDC000C" Margin="1,3,0,0" Data="M1,0L6,0A2,2,90,0,1,8,2L8,7z"/>
+                                        <Path Fill="#FFFFFFFF" Margin="1,3,0,0" Data="M0,0L2,0 8,6 8,8"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Rectangle Fill="#99FFFFFF" x:Name="DisabledVisual" Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="BorderBrush" TargetName="InnerBorder" Value="#FFFFBD69"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="ButtonMouseOverStoryboard">
+                                    <Storyboard Duration="00:00:00">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="BorderBrush">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush Color="#FFFFBD69"/>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ButtonMouseOverStoryboard"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="ShowTextBox" Value="False">
+                            <Setter Property="Visibility" TargetName="textbox" Value="Collapsed"/>
+                            <Setter Property="Width" TargetName="colDefText" Value="Auto"/>
+                            <Setter Property="Width" TargetName="colDefButtons" Value="*"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

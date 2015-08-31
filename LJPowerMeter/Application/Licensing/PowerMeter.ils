@@ -1,0 +1,35 @@
+﻿<AuthenticatedLicenseParameters>
+  <EncryptedLicenseParameters>
+    <ProductName>LaJust Power Meter</ProductName>
+    <ProductPassword>sf8cGj48A7V8</ProductPassword>
+    <RSAKeyValue>
+      <Modulus>n66mRwUlIE5rGPYLtrCrdDR1yGuOZbyALMEKvO6X2fIqWkTgVtaCKHVnjzxVG1JSOlngHuCtoOypeuL0pNKyxj4/0TGny7mYS5Eas2J0NnDEH2P75FsVzGQ7ESNyns/uXEmtCgzVCtfktW3X7bNQgi3ycb1ZCwJVjVaoQGiuUyM=</Modulus>
+      <Exponent>AQAB</Exponent>
+      <P>ykhIEashw4//aEzTixJhVogiBogBlgsha4wo7nNjJ+f6a3bYfkmYJXSN34987cl94S0HzBRt3gJmjnwxI/7tZw==</P>
+      <Q>yhZK62H28USEoRTdMF7KXddpVbkaWOSHHJSyTCsATJWT/CVX/IEyrz6dXHJ8TtzcZ4/LdsXDKI/j90FbNgya5Q==</Q>
+      <DP>clQSL7JKng6YK6ooclUMIO1GVeyvAM//rpqEU+lxpI9vsSd1y0LrNFhBC5c84+TbOdbKrmTph+5Rarz0xUSDhw==</DP>
+      <DQ>VdvK0N66UB9QSi/XGensCJqwwh72trXBQb9bUUkjw2X5jbNAAqPRqOrtaI2risYDTmylgTzcgatAq5g07G3GkQ==</DQ>
+      <InverseQ>ZzG4JzSO6TZSLra/XorwUPoj5HfxeUQgfKn4rs1AdjrHKyDb1Rx9waYHp2BpG0XsO0WFrNMbPvyxSV0kALaRCw==</InverseQ>
+      <D>ffkUaHbgoSn8R4bkGs4plNVGDkT747rgC26HgCFiXqgzTV+E9DzqFez5NADOy20YPbxlmTZ7A7dwxOeDRPyL16aFccOiP5SEt0aVaEhFmBSj7Dxk2HSpaiTb8KertuAej+3GiT4zI+jhDjrepatv9WVX9ZyBsopxsqaKYl4hg5E=</D>
+    </RSAKeyValue>
+    <DesignSignature>X0XJLQFa08k1f6BD9Zte2OyJyW/mk0dro0EYPN9nDM5egOzn1ljCBBGWdPEZmPHz++G7w1uNvTMI/KcIlgUTa/oTJAbd/kOXbDIDliZX1NAPkxtgAdhxiZL/TL3rx9faMdWg78C4jucprOmTCHHAjz1xHtBRoOWbQhV3jT9LhX0=</DesignSignature>
+    <RuntimeSignature>L5hUaIqMKt3xY0jOl8oKcoPnDzLfuZIV5/gHKJt/cqrm6ufnfmynGjNiL24nt2Lqczt+P3HeUSIxnikJJtJ+bRI5d6ljiRuP2vB1yu73gEAU1cF24HKz3v+xMsYmRBdVvuShKCvpLB2JFAjZE9HejFr73p+pCIlsZyZjAn2H930=</RuntimeSignature>
+    <KeyStrength>7</KeyStrength>
+    <ChecksumProductInfo>True</ChecksumProductInfo>
+    <TextEncoding>Base32</TextEncoding>
+    <ShortSerialNo>False</ShortSerialNo>
+  </EncryptedLicenseParameters>
+  <AuthenticationPassword>QY3s3XxHcZU2</AuthenticationPassword>
+  <MaxAuthentications>1</MaxAuthentications>
+  <AuthenticationServerURL>http://authsvc.lajust.net/LicenseService/AuthenticationService.asmx</AuthenticationServerURL>
+  <ServerRSAKeyValue>
+    <Modulus>zpt4gdTSKUZTSpbfEL02AJKqNbfeJZ79Xe6Z76dCzX+ntPQL+lusGJ1TUbGpY6SPdLHc++8Dvnl5F+8mT2nBhBNUYtVCohE3GrQin1B/zi42PUvgy/lx4jbW1GfG2blYYqwgp/TOXciQo+aHcuhgpX8w+1azd6zD/gb/yo8asPc=</Modulus>
+    <Exponent>AQAB</Exponent>
+    <P>9ZRO/gHt+SnhoHGdgykLwzggTV+KowZ+7vGIa3Dnr2dNWLd9W3Tc9NI70wfhBYaW1l7Les1faEGII9a4rngL4Q==</P>
+    <Q>11/QnytphsNlTyZA5MRIGwBAp3NgJhkz3tTN0ONydN85ZGbMWYSmFI8X63IpeMYSi1P/0n+omaIKSJLaqieX1w==</Q>
+    <DP>O47KUYP6SNFFbPng72xG9ANqohknsD3lDuH46cWqCroM4hUuC74d0CokZBunEQYBEuBOjOu91bT+5WIvy/BFQQ==</DP>
+    <DQ>DX8wqLjkvRBDqgkgqfVu+1oxswy06s5LhNxbJYsLYi2XACa9CaMZcVJiUlvuI2ZuRRL3hi5/11jjQhcJ4v3mMw==</DQ>
+    <InverseQ>1aQVjeskYZpAh1ZhO9Sv6oJ59QHxeu40iLmmlYvAv3i0MukZpk8eQ58BKGPWduvb3Ril606BriU7g9pWKzdL0g==</InverseQ>
+    <D>yOnxZzgBY3fq+Wb75vhI8oetk+2IzsbslpK4CZB66wHPoa2NlFnfYlRjuNbu5WIayx1Hy4rj9i+EbZz3gVRThI9Rfyyjr87Xn2LKl8vS3bS6JrJVYf4ufcJK8pbnkl/xbRHhGKw0HsC6jtVULIyzgIFhu+74OXFPKfS7TVfik8E=</D>
+  </ServerRSAKeyValue>
+</AuthenticatedLicenseParameters>

@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Graphing.PopupGraphView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit">
+    <Grid>
+        <charting:Chart Title="{Binding Title}" LegendTitle="Legend">
+            <charting:LineSeries Title="Impact Level" ItemsSource="{Binding ImpactHistory}"/>
+        </charting:Chart>
+    </Grid>
+</UserControl>

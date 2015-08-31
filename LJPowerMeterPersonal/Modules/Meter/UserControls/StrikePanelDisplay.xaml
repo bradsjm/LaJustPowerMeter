@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="LaJust.PowerMeter.Modules.Meter.UserControls.StrikePanelDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" MinWidth="100" MinHeight="20">
+    
+    <UniformGrid Rows="1" Background="WhiteSmoke" x:Name="Panels">
+        <Rectangle Stroke="Black" Margin="2"/>
+        <Rectangle Stroke="Black" Margin="0,2"/>
+        <Rectangle Stroke="Black" Margin="2" />
+    </UniformGrid>
+</UserControl>
